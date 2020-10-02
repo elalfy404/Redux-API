@@ -23,7 +23,7 @@ const DataList = (props) => {
                     return (
                         <div className={"card"} key={el.pkID}>
                             <div className="card_img">
-                                <img src={el.ImageUrl} alt={el.Name} />
+                                <img src={el.Logo} alt={el.Name} />
                             </div>
                             <h2>{el.Name}</h2>
                             <div className="center">

@@ -14,7 +14,7 @@ export const GetDataList = () => async (dispatch) => {
             },
         });
 
-        const res = await axios.get(`http://62.68.253.183:8000/ngos/`);
+        const res = await axios.get(`https://megakheir.herokuapp.com/ngos`);
 
         dispatch({
             type: FETCH_DATA_SUCCESS,
