@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { GetDataList } from "../actions/dataActions";
 
 const DataList = (props) => {
     const dispatch = useDispatch();
     const dataList = useSelector((state) => state.dataReducers);
-    React.useEffect(() => {
+    useEffect(() => {
         dispatch(GetDataList(props));
-    }, []);
+    }, [dispatch, props]);
 
     const ShowData = () => {
         if (dataList.loading) {
