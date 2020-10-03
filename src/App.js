@@ -9,7 +9,7 @@ function App() {
         <>
             <Navbar />
             <header>
-                <h2 className="header-title">الجمعيات الخيرية</h2>
+                <h1 className="header-title">الجمعيات الخيرية</h1>
             </header>
             <main className="container">
                 <DataList />

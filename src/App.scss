@@ -3,6 +3,10 @@
 
 //  ---------
 $color-w: #fff;
+$breakpoint: media;
+$mq-tablet-portrait: 992px;
+$mq-mobile-landscape: 576px;
+$mq-mobile-portrait: 480px;
 
 // ----
 %nav-foot {
@@ -15,6 +19,28 @@ $color-w: #fff;
     margin-left: 25px;
     margin-top: 24px;
 }
+
+// --------
+
+@mixin respond($breakpoint) {
+    @if ($breakpoint == tablet) {
+        @media screen and (max-width: $mq-tablet-portrait) {
+            @content;
+        }
+    }
+    @if ($breakpoint == medium) {
+        @media screen and (max-width: $mq-mobile-landscape) {
+            @content;
+        }
+    }
+    @if ($breakpoint == small) {
+        @media screen and (max-width: $mq-mobile-portrait) {
+            @content;
+        }
+    }
+}
+
+// ---------
 
 .navbar {
     @extend %nav-foot;
@@ -35,8 +61,16 @@ $color-w: #fff;
 
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     justify-items: center;
+    // Media Queries max-width: 992px;
+    @include respond(tablet) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    // Media Queries max-width: 576px;
+    @include respond(medium) {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
     .list-wrapper {
         display: contents;
@@ -48,7 +82,15 @@ $color-w: #fff;
             margin: 15px;
             border-radius: 5px;
             background-color: rgb(255, 255, 255);
-
+            // Media Queries max-width: 576px;
+            @include respond(medium) {
+                height: 27rem;
+            }
+            // Media Queries max-width: 480px;
+            @include respond(small) {
+                height: 15rem;
+                margin-bottom: 20px;
+            }
             .card_img {
                 height: 100%;
                 display: contents;
@@ -60,31 +102,58 @@ $color-w: #fff;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 15px;
+                    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+                    // Media Queries max-width: 576px;
+                    @include respond(medium) {
+                        height: 65%;
+                    }
+                    // Media Queries max-width: 480px;
+                    @include respond(small) {
+                        height: 50%;
+                    }
                 }
             }
             h2 {
                 color: rgb(11, 88, 230);
-                font-size: clamp(1.1rem, 1.6vw, 2rem);
+                font-size: clamp(1.2rem, 1.5vw, 2rem);
                 text-align: center;
-                margin: 25px 40px 15px 40px;
+                margin: 15px 10px 15px 10px;
+                // Media Queries max-width: 576px;
+                @include respond(medium) {
+                    margin: 23px 5px 17px 5px;
+                }
+                // Media Queries max-width: 480px;
+                @include respond(small) {
+                    font-size: 0.9em;
+                    margin: 9px 1px;
+                }
             }
             .center {
                 text-align: center;
                 button {
+                    font-family: "El Messiri", sans-serif;
+                    font-size: clamp(1rem, 1.2vw, 2rem);
                     background: #d60ac2;
+                    color: $color-w;
                     border-radius: 5px;
                     border: none;
-                    padding: 10px 20px;
-                    width: 50%;
-                    height: 11%;
-                    color: $color-w;
+                    width: 45%;
+                    padding: 8px 5px;
                     text-align: center;
                     text-decoration: none;
                     display: inline-block;
-                    font-size: clamp(1rem, 1.2vw, 2.7rem);
                     overflow: hidden;
                     cursor: pointer;
-                    font-family: "El Messiri", sans-serif;
+
+                    // Media Queries max-width: 480px;
+                    @include respond(small) {
+                        position: relative;
+                        top: 10px;
+                        right: 0;
+                        padding: 7px 0;
+                        font-size: 0.8rem;
+                    }
                 }
             }
         }
@@ -93,20 +162,22 @@ $color-w: #fff;
 
 footer {
     @extend %nav-foot;
+    height: 3rem;
 
     .pow-left {
         @extend %float-lest;
+        margin-top: 10px;
     }
 
     .icon {
-        img {
-            padding: 20px;
-        }
-    }
-}
+        position: relative;
+        top: 10px;
+        right: 20px;
 
-@media screen and (max-width: 992px) {
-    .container {
-        grid-template-columns: repeat(2, 1fr);
+        &:nth-child(2) {
+            position: relative;
+            top: 10px;
+            right: 40px;
+        }
     }
 }
