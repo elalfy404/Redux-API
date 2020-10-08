@@ -16,8 +16,6 @@ $mq-mobile-portrait: 480px;
 }
 %float-lest {
     float: left;
-    margin-left: 25px;
-    margin-top: 24px;
 }
 
 // --------
@@ -46,17 +44,34 @@ $mq-mobile-portrait: 480px;
     @extend %nav-foot;
     .vendor-left {
         @extend %float-lest;
+        position: relative;
+        top: 20px;
+        left: 20px;
+        // Media Queries max-width: 480px;
+        @include respond(small) {
+            position: relative;
+            top: 20px;
+            left: 5px;
+            margin: 0;
+        }
     }
     .meg-center {
         text-align: center;
         padding-top: 20px;
+        width: 10rem;
+        margin: auto;
     }
 }
 
 .header-title {
     color: $color-w;
-    font-size: clamp(1.5rem, 1.6vw, 2.5rem);
+    font-size: clamp(1.3rem, 1.6vw, 2.5rem);
     margin-right: 20px;
+    // Media Queries max-width: 480px;
+    @include respond(small) {
+        margin-bottom: 0;
+        margin-right: 5px;
+    }
 }
 
 .container {
@@ -67,10 +82,6 @@ $mq-mobile-portrait: 480px;
     @include respond(tablet) {
         grid-template-columns: repeat(3, 1fr);
     }
-    // Media Queries max-width: 576px;
-    @include respond(medium) {
-        grid-template-columns: repeat(2, 1fr);
-    }
 
     .list-wrapper {
         display: contents;
@@ -78,18 +89,13 @@ $mq-mobile-portrait: 480px;
         .card {
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
             width: 95%;
-            height: 35rem;
             margin: 15px;
             border-radius: 5px;
             background-color: rgb(255, 255, 255);
-            // Media Queries max-width: 576px;
-            @include respond(medium) {
-                height: 27rem;
-            }
+
             // Media Queries max-width: 480px;
             @include respond(small) {
-                height: 15rem;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
             .card_img {
                 height: 100%;
@@ -101,8 +107,8 @@ $mq-mobile-portrait: 480px;
                     display: block;
                     margin-left: auto;
                     margin-right: auto;
-                    margin-top: 15px;
-                    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+                    margin-top: 8px;
+                    border: 1px solid rgb(250, 247, 247);
 
                     // Media Queries max-width: 576px;
                     @include respond(medium) {
@@ -110,31 +116,33 @@ $mq-mobile-portrait: 480px;
                     }
                     // Media Queries max-width: 480px;
                     @include respond(small) {
-                        height: 50%;
+                        height: 48%;
+                        width: 89%;
                     }
                 }
             }
-            h2 {
-                color: rgb(11, 88, 230);
-                font-size: clamp(1.2rem, 1.5vw, 2rem);
-                text-align: center;
-                margin: 15px 10px 15px 10px;
-                // Media Queries max-width: 576px;
-                @include respond(medium) {
-                    margin: 23px 5px 17px 5px;
-                }
-                // Media Queries max-width: 480px;
-                @include respond(small) {
-                    font-size: 0.9em;
-                    margin: 9px 1px;
-                }
-            }
             .center {
+                h2 {
+                    color: rgb(11, 88, 230);
+                    font-size: clamp(1.2rem, 1.5vw, 2rem);
+                    text-align: center;
+                    margin: 15px 10px 15px 10px;
+                    // Media Queries max-width: 576px;
+                    @include respond(medium) {
+                        margin: 23px 5px 17px 5px;
+                    }
+                    // Media Queries max-width: 480px;
+                    @include respond(small) {
+                        font-size: 0.9em;
+                        margin: 9px 1px;
+                    }
+                }
+
                 text-align: center;
                 button {
                     font-family: "El Messiri", sans-serif;
                     font-size: clamp(1rem, 1.2vw, 2rem);
-                    background: #d60ac2;
+                    background: #d60a69;
                     color: $color-w;
                     border-radius: 5px;
                     border: none;
@@ -145,14 +153,13 @@ $mq-mobile-portrait: 480px;
                     display: inline-block;
                     overflow: hidden;
                     cursor: pointer;
+                    margin-bottom: 10px;
 
                     // Media Queries max-width: 480px;
                     @include respond(small) {
-                        position: relative;
-                        top: 10px;
-                        right: 0;
-                        padding: 7px 0;
-                        font-size: 0.8rem;
+                        font-size: 0.8em;
+                        padding: 5px;
+                        width: 90%;
                     }
                 }
             }
@@ -167,6 +174,7 @@ footer {
     .pow-left {
         @extend %float-lest;
         margin-top: 10px;
+        margin-left: 25px;
     }
 
     .icon {

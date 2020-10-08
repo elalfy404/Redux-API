@@ -25,8 +25,8 @@ const DataList = (props) => {
                             <div className="card_img">
                                 <img src={el.Logo} alt={el.Name} />
                             </div>
-                            <h2>{el.Name}</h2>
                             <div className="center">
+                                <h2>{el.Name}</h2>
                                 <button type="button">تبرع الان</button>
                             </div>
                         </div>
